@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <h2 class="text-center">Lista de Usuarios</h2>
+  <ul class="list-group">
+    <li *ngFor="let usuario of usuarios" class="list-group-item">
+      <strong>{{ usuario.id }}</strong> - <strong>{{ usuario.nombre }}</strong> - {{ usuario.email }} - Empresa: {{ usuario.empresa }}
+    </li>
+  </ul>
+
+  <h2 class="mt-4">Agregar Usuario</h2>
+  <form (ngSubmit)="agregarUsuario()">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" [(ngModel)]="nuevoUsuario.nombre" name="nombre" class="form-control" id="nombre" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" [(ngModel)]="nuevoUsuario.email" name="email" class="form-control" id="email" required>
+    </div>
+    <div class="mb-3">
+      <label for="empresa" class="form-label">Empresa</label>
+      <input type="text" [(ngModel)]="nuevoUsuario.empresa" name="empresa" class="form-control" id="empresa" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar Usuario</button>
+  </form>
+
+  <h2 class="mt-4">Modificar Usuario</h2>
+  <form (ngSubmit)="modificarUsuario()">
+    <div class="mb-3">
+      <label for="modificarNombre" class="form-label">Nombre</label>
+      <input type="text" [(ngModel)]="usuarioModificar.nombre" name="modificarNombre" class="form-control" id="modificarNombre" required>
+    </div>
+    <div class="mb-3">
+      <label for="modificarEmail" class="form-label">Email</label>
+      <input type="email" [(ngModel)]="usuarioModificar.email" name="modificarEmail" class="form-control" id="modificarEmail" required>
+    </div>
+    <div class="mb-3">
+      <label for="modificarEmpresa" class="form-label">Empresa</label>
+      <input type="text" [(ngModel)]="usuarioModificar.empresa" name="modificarEmpresa" class="form-control" id="modificarEmpresa" required>
+    </div>
+    <button type="submit" class="btn btn-warning">Modificar Usuario</button>
+  </form>
+
+  <h2 class="mt-4">Eliminar Usuario</h2>
+  <div class="mb-3">
+    <label for="eliminarId" class="form-label">ID del usuario a eliminar</label>
+    <input type="number" [(ngModel)]="usuarioEliminarId" name="eliminarId" class="form-control" id="eliminarId">
+    <button (click)="eliminarUsuario()" class="btn btn-danger mt-2">Eliminar Usuario</button>
+  </div>
+</div>
